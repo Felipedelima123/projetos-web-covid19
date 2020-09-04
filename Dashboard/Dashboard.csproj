@@ -102,6 +102,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="js\scripts.js" />
+    <Content Include="pages\401.html" />
+    <Content Include="pages\404.html" />
+    <Content Include="pages\500.html" />
+    <Content Include="pages\charts.html" />
+    <Content Include="pages\layout-sidenav-light.html" />
+    <Content Include="pages\layout-static.html" />
+    <Content Include="pages\login.html" />
+    <Content Include="pages\password.html" />
+    <Content Include="pages\register.html" />
+    <Content Include="pages\tables.html" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
