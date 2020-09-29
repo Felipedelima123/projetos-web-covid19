@@ -100,8 +100,6 @@
     <Content Include="pages\404.html" />
     <Content Include="pages\500.html" />
     <Content Include="pages\charts.html" />
-    <Content Include="pages\layout-sidenav-light.html" />
-    <Content Include="pages\layout-static.html" />
     <Content Include="pages\login.html" />
     <Content Include="pages\password.html" />
     <Content Include="pages\register.html" />
