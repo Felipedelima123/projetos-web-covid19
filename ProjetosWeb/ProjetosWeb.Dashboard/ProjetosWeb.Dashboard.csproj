@@ -95,6 +95,7 @@
     <Content Include="assets\img\error-404-monochrome.svg" />
     <Content Include="css\styles.css" />
     <Content Include="Global.asax" />
+    <Content Include="js\map.js" />
     <Content Include="js\scripts.js" />
     <Content Include="pages\401.html" />
     <Content Include="pages\404.html" />
@@ -104,11 +105,15 @@
     <Content Include="pages\password.html" />
     <Content Include="pages\register.html" />
     <Content Include="pages\tables.html" />
+    <Content Include="js\citys.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SignUpController.cs" />
+    <Compile Include="Filters\FiltroExcessao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -117,10 +122,16 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Upload.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\Recovery.cshtml" />
+    <Content Include="Views\SignUp\Index.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Shared\PageNotFound.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
