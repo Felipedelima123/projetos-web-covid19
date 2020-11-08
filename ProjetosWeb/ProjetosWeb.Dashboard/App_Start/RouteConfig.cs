@@ -16,7 +16,7 @@ namespace ProjetosWeb.Dashboard
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "home", action = "dashboard", id = UrlParameter.Optional }
+                defaults: new { controller = "signin", action = "index", id = UrlParameter.Optional }
             );
         }
     }
