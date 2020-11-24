@@ -21,12 +21,11 @@ namespace ProjetosWeb.WebAPI.Controllers
         /// <summary>
         /// Este método realiza o login do usuário
         /// </summary>
-        /// <param name="email">Email do usuário cadastrado na plataforma</param>
-        /// <param name="password">Senha do usuário cadastrado na plataforma</param>
+        /// <param name="user">Usuário recebido pela tela de login</param>
         /// <returns>Retorna o Id do usuário logado</returns>
 
 
-        public HttpResponseMessage Post([FromBody]string email, [FromBody] string password)
+        public HttpResponseMessage Post([FromBody] ProjetosWeb.WebAPI.Models.User user)
         {
             try
             {
@@ -36,7 +35,11 @@ namespace ProjetosWeb.WebAPI.Controllers
                 UserRepository userRepository = new UserRepository();
                 UserApplication userApplication = new UserApplication(userRepository);
 
-                Guid id = userApplication.Inserir(new ProjetosWeb.Domain.Entities.User());
+                Guid id = userApplication.Inserir(new ProjetosWeb.Domain.Entities.User()
+                {
+                    Email = user.Email,
+                    Password = user.Password
+                });
 
                 return Request.CreateResponse(HttpStatusCode.OK, id);
             } catch (ApplicationException ap) {

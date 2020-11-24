@@ -486,12 +486,11 @@
             API Responsável pelo login do usuário
             </summary>
         </member>
-        <member name="M:ProjetosWeb.WebAPI.Controllers.SignInController.Post(System.String,System.String)">
+        <member name="M:ProjetosWeb.WebAPI.Controllers.SignInController.Post(ProjetosWeb.WebAPI.Models.User)">
             <summary>
             Este método realiza o login do usuário
             </summary>
-            <param name="email">Email do usuário cadastrado na plataforma</param>
-            <param name="password">Senha do usuário cadastrado na plataforma</param>
+            <param name="user">Usuário recebido pela tela de login</param>
             <returns>Retorna o Id do usuário logado</returns>
         </member>
     </members>

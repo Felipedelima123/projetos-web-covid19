@@ -102,6 +102,7 @@
     <Content Include="assets\img\error-404-monochrome.svg" />
     <Content Include="css\styles.css" />
     <Content Include="Global.asax" />
+    <Content Include="js\bairros.js" />
     <Content Include="js\map.js" />
     <Content Include="js\scripts.js" />
     <Content Include="pages\401.html" />
