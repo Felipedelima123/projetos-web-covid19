@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
-import MapboxGL from '@mapbox/react-native-mapbox-gl';
+import MapboxGL, {PointAnnotation,Callout, MapView } from '@react-native-mapbox-gl/maps';
 
-MapboxGL.setAccessToken('Coloque seu token aqui');
+MapboxGL.setAccessToken('pk.eyJ1IjoiY2F0ZWwiLCJhIjoiY2tod2h5NnAzMXJxZjJ4bnAzcWFlcThkZCJ9.Fg1IdFfW3sC_J4Q1MRLAAQ');
 
 const MapBox = () => {
   const renderAnnotations = () => {
     return (
-      <MapboxGL.PointAnnotation
+      <PointAnnotation
         id='rocketseat'
         coordinate={[-49.6446024, -27.2108001]}
       >
         <View style={styles.annotationContainer}>
           <View style={styles.annotationFill} />
         </View>
-        <MapboxGL.Callout title='Rocketseat House' />
-      </MapboxGL.PointAnnotation>
+        <Callout title='Rocketseat House' />
+      </PointAnnotation>
     )
   }
 
   return (
-    <MapboxGL.MapView
+    <MapView
       centerCoordinate={[-49.6446024, -27.2108001]}
       style={styles.container}
       showUserLocation
       styleURL={MapboxGL.StyleURL.Dark}
     >
-    {renderAnnotations()}
-    </MapboxGL.MapView>
+      {renderAnnotations()}
+    </MapView>
   );
 }
 
