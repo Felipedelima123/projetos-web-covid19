@@ -1,18 +1,17 @@
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import MapBox from './components/MapBox';
+import { AuthProvider } from './src/contexts/AuthContext';
+import { Provider as PaperProvider } from 'react-native-paper';
+import Routes from './src/routes';
 
 export default function App() {
   return (
-    <MapBox />
+    <PaperProvider>
+      <NavigationContainer>
+        <AuthProvider>
+          <Routes />
+        </AuthProvider>
+      </NavigationContainer>
+    </PaperProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
