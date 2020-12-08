@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ProjetosWebCovidApp.Models.InfectedData>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Idade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TpPaciente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataInclusao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNotificacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataRecuperacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataObito)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Idade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TpPaciente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bairro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataInclusao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNotificacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataRecuperacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataObito)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
