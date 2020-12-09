@@ -46,7 +46,7 @@ namespace ProjetosWebCovidApp.Controllers
             if (ModelState.IsValid)
             {
                 db.InfectedDatas.Add(infectedData);
-                db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -76,7 +76,7 @@ namespace ProjetosWebCovidApp.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(infectedData).State = EntityState.Modified;
-                db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(infectedData);
@@ -104,7 +104,7 @@ namespace ProjetosWebCovidApp.Controllers
         {
             InfectedData infectedData = db.InfectedDatas.Find(id);
             db.InfectedDatas.Remove(infectedData);
-            db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

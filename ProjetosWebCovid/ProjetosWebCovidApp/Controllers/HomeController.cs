@@ -72,7 +72,7 @@ namespace ProjetosWebCovidApp.Controllers
                     Session["Username"] = data.FirstOrDefault().Username;
                     Session["Email"] = data.FirstOrDefault().Email;
                     Session["ID"] = data.FirstOrDefault().ID;
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Dashboard");
                 }
                 else
                 {

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjetosWebCovidApp.Models
 {
     public class InfectedData
     {
+        [Key]
         public int ID { get; set; }
         public int Idade { get; set; }
         public string Sexo { get; set; }
