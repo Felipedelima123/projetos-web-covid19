@@ -1,37 +1,13 @@
 import BackgroundGeolocation from '@mauron85/react-native-background-geolocation';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
+import { positions } from '../services/requests';
 
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
 
   const [isTracking, setIsTracking] = useState(false);
-
-  BackgroundGeolocation.configure({
-    debug: false,
-    locationProvider: BackgroundGeolocation.ACTIVITY_PROVIDER,
-    desiredAccuracy: BackgroundGeolocation.HIGH_ACCURACY,
-    stationaryRadius: 25,
-    distanceFilter: 50,
-    interval: 5000,
-    fastestInterval: 10000,
-    activitiesInterval: 10000,
-    startOnBoot: false,
-    stopOnTerminate: false,
-    startForeground: true,
-    notificationsEnabled: true,
-    notificationTitle: 'Covid Tracker',
-    notificationText: 'Serviço de localização rodando em segundo plano.',
-    notificationIconColor: '#7159C1',
-    notificationIconSmall: 'ic_laucher_round',
-    notificationIconLarge: 'ic_laucher_round',
-    activityType: 'Fitness',
-  });
-
-  BackgroundGeolocation.on('location', (location) => {
-    console.log(location);
-  });
 
   const startTracking = async () => {
     BackgroundGeolocation.checkStatus(({ isRunning, locationServicesEnabled, authorization }) => {
@@ -75,12 +51,41 @@ export const AppProvider = ({ children }) => {
   }
 
   const stopTracking = async () => {
-    BackgroundGeolocation.stop();
-    BackgroundGeolocation.removeAllListeners();
-    setIsTracking(false);
+    BackgroundGeolocation.checkStatus(({ isRunning }) => {
+      if(isRunning) {
+        BackgroundGeolocation.stop();
+        BackgroundGeolocation.removeAllListeners();
+        BackgroundGeolocation.deleteAllLocations();
+        setIsTracking(false);
+      }
+    });
   }
 
   useEffect(() => {
+    // const positionsUrl = 'http://192.168.0.3:54926/api/UserPositionsApi';
+
+    BackgroundGeolocation.configure({
+      debug: false,
+      locationProvider: BackgroundGeolocation.DISTANCE_FILTER_PROVIDER,
+      desiredAccuracy: BackgroundGeolocation.HIGH_ACCURACY,
+      stationaryRadius: 10,
+      distanceFilter: 15,
+      interval: 5000,
+      startOnBoot: false,
+      stopOnTerminate: false,
+      startForeground: true,
+      notificationsEnabled: true,
+      notificationTitle: 'Covid Tracker',
+      notificationText: 'Serviço de localização rodando em segundo plano.',
+      notificationIconColor: '#7159C1',
+      notificationIconSmall: 'ic_laucher_round',
+      notificationIconLarge: 'ic_laucher_round',
+    });
+  
+    BackgroundGeolocation.on('location', async (location) => {
+      await positions(location);
+    });
+    
     BackgroundGeolocation.checkStatus(({ isRunning }) => {
       if (isRunning && !isTracking) {
         setIsTracking(true);

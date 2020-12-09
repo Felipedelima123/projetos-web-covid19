@@ -2,7 +2,6 @@ import BackgroundGeolocation from '@mauron85/react-native-background-geolocation
 import React, {
   createContext, useContext, useState
 } from 'react';
-import * as auth from '../services/auth';
 
 const AuthContext = createContext();
 
@@ -19,7 +18,6 @@ export const AuthProvider = ({ children }) => {
 
   async function signIn(user) {
     setLoading(true);
-    
     setUser(user);
     setLoading(false);
   }

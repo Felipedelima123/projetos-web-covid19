@@ -1,12 +1,12 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import GMap from '../../components/GMap';
 import styles from './styles';
-import MapBox from '../../components/MapBox';
 
 const Home = () => {
   return (
     <View style={styles.container}>
-      <MapBox />
+      <GMap />
     </View>
   );
 }
