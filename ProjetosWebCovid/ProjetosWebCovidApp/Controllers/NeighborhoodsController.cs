@@ -48,7 +48,7 @@ namespace ProjetosWebCovidApp.Controllers
             if (ModelState.IsValid)
             {
                 db.Neighborhoods.Add(neighborhood);
-                db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -80,7 +80,7 @@ namespace ProjetosWebCovidApp.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(neighborhood).State = EntityState.Modified;
-                db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(neighborhood);
@@ -108,7 +108,7 @@ namespace ProjetosWebCovidApp.Controllers
         {
             Neighborhood neighborhood = db.Neighborhoods.Find(id);
             db.Neighborhoods.Remove(neighborhood);
-            db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 

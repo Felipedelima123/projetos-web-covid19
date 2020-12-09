@@ -50,7 +50,7 @@ namespace ProjetosWebCovidApp.Controllers
 
             try
             {
-                db.SaveChangesAsync();
+                db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -76,8 +76,9 @@ namespace ProjetosWebCovidApp.Controllers
                 return BadRequest(ModelState);
             }
 
+
             db.UserPositions.Add(userPosition);
-            db.SaveChangesAsync();
+            db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = userPosition.ID }, userPosition);
         }
@@ -93,7 +94,7 @@ namespace ProjetosWebCovidApp.Controllers
             }
 
             db.UserPositions.Remove(userPosition);
-            db.SaveChangesAsync();
+            db.SaveChanges();
 
             return Ok(userPosition);
         }
