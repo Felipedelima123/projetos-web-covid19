@@ -14,6 +14,15 @@ namespace ProjetosWebCovidApp
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/map").Include(
+                        "~/Scripts/map.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bairros").Include(
+                        "~/Scripts/bairros.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/toggle").Include(
+                        "~/Scripts/toggle-menu.js"));
+
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -25,6 +34,9 @@ namespace ProjetosWebCovidApp
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/dashboard").Include(
+                      "~/Content/styles.css"));
         }
     }
 }

@@ -62,8 +62,6 @@ namespace ProjetosWebCovidApp.Controllers
         {
             if (ModelState.IsValid)
             {
-
-
                 var f_password = GetMD5(password);
                 var data = db.Users.Where(s => s.Username.Equals(username) && s.Password.Equals(f_password)).ToList();
                 if (data.Count() > 0)
@@ -77,7 +75,7 @@ namespace ProjetosWebCovidApp.Controllers
                 else
                 {
                     ViewBag.error = "Login failed";
-                    return RedirectToAction("Login");
+                    return RedirectToAction("Login", "Home");
                 }
             }
             return View();

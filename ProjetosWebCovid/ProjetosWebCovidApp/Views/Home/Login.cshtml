@@ -2,34 +2,59 @@
 
 @{
     ViewBag.Title = "Login";
+    Layout = null;
 }
-<div class="row justify-content-md-center conteudo">
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-header">
-                Login
-            </div>
-            <div class="card-body">
-                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Username)
-                        @Html.TextBoxFor(m => m.Username, "", new { @class = "form-control", @placeholder = "Username" })
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>@ViewBag.Title - Covid Tracker</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+        @Styles.Render("~/Content/dashboard")
+    </head>
+    <body class="bg-dark">
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content">
+                <main>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
+                                    <div class="card-body">
+                                        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.Username)
+                                                @Html.TextBoxFor(m => m.Username, "", new { @class = "form-control", @placeholder = "Username" })
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.Password)
+                                                @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                                            </div>
+                                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                <a class="small" href="/signin/recovery">Forgot Password?</a>
+                                                <button class="btn btn-primary" type="submit">Login</button>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        <div class="small"><a href="@Url.Action("Register")">Need an account? Sign up!</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password)
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" name="submit" class="btn btn-primary" value="Login" />
-                    </div>
-                }
+                </main>
             </div>
-            <a href="@Url.Action("Register")" class="btn btn-success">Register</a>
         </div>
-    </div>
-</div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+    </body>
+</html>
 
 
