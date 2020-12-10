@@ -48,7 +48,7 @@ namespace ProjetosWebCovidApp.Controllers
             if (ModelState.IsValid)
             {
                 db.Users.Add(user);
-                db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -80,7 +80,7 @@ namespace ProjetosWebCovidApp.Controllers
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;
-                db.SaveChangesAsync();
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(user);
@@ -108,7 +108,7 @@ namespace ProjetosWebCovidApp.Controllers
         {
             User user = db.Users.Find(id);
             db.Users.Remove(user);
-            db.SaveChangesAsync();
+            db.SaveChanges();
             return RedirectToAction("Index");
         }
 
