@@ -50,7 +50,7 @@ namespace ProjetosWebCovidApp.Controllers
 
             try
             {
-                db.SaveChangesAsync();
+                db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -77,7 +77,7 @@ namespace ProjetosWebCovidApp.Controllers
             }
 
             db.Neighborhoods.Add(neighborhood);
-            db.SaveChangesAsync();
+            db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = neighborhood.ID }, neighborhood);
         }
@@ -93,7 +93,7 @@ namespace ProjetosWebCovidApp.Controllers
             }
 
             db.Neighborhoods.Remove(neighborhood);
-            db.SaveChangesAsync();
+            db.SaveChanges();
 
             return Ok(neighborhood);
         }

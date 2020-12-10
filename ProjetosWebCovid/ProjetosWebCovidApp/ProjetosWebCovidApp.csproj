@@ -370,6 +370,7 @@
       <DependentUpon>202012061917341_AddUserStructure.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\NeighborhoodInfecteds.cs" />
     <Compile Include="Models\InfectedData.cs" />
     <Compile Include="Models\Neighborhood.cs" />
     <Compile Include="Models\User.cs" />
