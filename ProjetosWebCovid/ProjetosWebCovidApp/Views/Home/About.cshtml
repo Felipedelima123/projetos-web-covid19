@@ -1,7 +1,33 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<div class="container-fluid">
+    <h1 class="mt-4">@ViewBag.Title</h1>
+    <div class="mt-4 jumbotron card">
+        <div class="card-body">
+            <div class="col-md-12 text-justify">
+                <h2>Uniftec - Projetos Web - COVID19 Tracker</h2>
+                <p>
+                    Temos como objetivo capturar informações diretamente do GPS de um dispositivo móvel e
+                    comparar com uma base de dados de casos positivos para COVID e com um cálculo
+                    de Geolocalização apontar os locais que ofereceram maior risco para o usuário
+                    e quais os locais que deveriam ser evitados.
+                </p>
+                <p>
+                    O aplicativo Mobile irá enviar as coordenadas (latitude e longitude) para uma API, que
+                    será construída, utilizando C# e iremos inserir em um banco de dados PostgreSQL.
+                    Esta API também será responsável por importar a base de dados pública,
+                    onde constam os dados necessários para que possamos realizar um Geocode.
+                    Após o Geocode poderemos calcular a distância em que os casos positivos de COVID19 residem e o percurso realizado pelos nossos usuários.
+                </p>
+                <p>
+                    Em posse desta análise, iremos montar um dashboard exibindo um mapa de calor, dos locais mais perigosos para se frequentar.
+                </p>
+                <a href="https://github.com/Felipedelima123/projetos-web-covid19" target="_blank" class="btn btn-dark">
+                    Saiba Mais &raquo;
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
