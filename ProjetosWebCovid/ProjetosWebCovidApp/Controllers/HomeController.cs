@@ -4,6 +4,12 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
+using LumenWorks.Framework.IO.Csv;
+using System.Data;
+using System.IO;
+using System.Web;
+using System;
+using System.Collections.Generic;
 
 namespace ProjetosWebCovidApp.Controllers
 {
@@ -75,7 +81,7 @@ namespace ProjetosWebCovidApp.Controllers
                 else
                 {
                     ViewBag.error = "Login failed";
-                    return RedirectToAction("Login", "Home");
+                    return RedirectToAction("Login");
                 }
             }
             return View();
@@ -103,11 +109,84 @@ namespace ProjetosWebCovidApp.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Upload()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Upload(HttpPostedFileBase upload)
+        {
+            if (ModelState.IsValid)
+            {
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    if (upload.FileName.EndsWith(".csv"))
+                    {
+                        Stream stream = upload.InputStream;
+                        DataTable csvTable = new DataTable();
+                        using (CsvReader csvReader =
+                            new CsvReader(new StreamReader(stream), true))
+                        {
+                            csvTable.Load(csvReader);
+                        }
+
+                        foreach (DataRow row in csvTable.Rows)
+                        {
+                            foreach (DataColumn col in csvTable.Columns)
+                            {
+                                int i = 0;
+
+                                string colData = row[i].ToString();
+                                string colDataFormatted = colData.Replace("\"", "");
+
+                                var stringArray = colDataFormatted.Split(',');
+
+                                InfectedData data = new InfectedData()
+                                {
+                                    Idade = int.Parse(stringArray[0]),
+                                    Sexo = stringArray[1],
+                                    TpPaciente = stringArray[2],
+                                    Bairro = stringArray[3],
+                                    DataInclusao = getDatetimeFromString(stringArray[4]),
+                                    DataNotificacao = getDatetimeFromString(stringArray[5]),
+                                    DataRecuperacao = getDatetimeFromString(stringArray[6]),
+                                    DataObito = getDatetimeFromString(stringArray[7]),
+                                };
+
+                                db.InfectedDatas.Add(data);
+                                i++;
+                            }
+                        }
+
+                        db.SaveChangesAsync();
+                        return View(csvTable);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("Arquivo", "Formato do arquivo não é suportado");
+                        return View();
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("Arquivo", "Faça o Upload do arquivo");
+                }
+            }
+            return View();
+        }
+        private DateTime getDatetimeFromString(string date)
+        {
+            try
+            {
+                return DateTime.Parse(date);
+            } catch (FormatException)
+            {
+                return DateTime.MinValue;
+            }
         }
     }
 }

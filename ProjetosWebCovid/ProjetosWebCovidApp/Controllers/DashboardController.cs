@@ -54,7 +54,7 @@ namespace ProjetosWebCovidApp.Controllers
             }
             else
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Login", "Home");
             }
         }
     }
